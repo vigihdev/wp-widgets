@@ -22,10 +22,6 @@ abstract class BaseTextField
     ) {}
 
 
-    /**
-     *
-     * @return string
-     */
     protected function getLabel(): string
     {
 
@@ -44,10 +40,6 @@ abstract class BaseTextField
         ]);
     }
 
-    /**
-     *
-     * @return string
-     */
     protected function textInput(): string
     {
 
@@ -74,10 +66,6 @@ abstract class BaseTextField
     }
 
 
-    /**
-     *
-     * @return string
-     */
     protected function inputGroupPrepend(): string
     {
 
