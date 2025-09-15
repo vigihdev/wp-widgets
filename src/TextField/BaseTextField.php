@@ -74,6 +74,10 @@ abstract class BaseTextField
     }
 
 
+    /**
+     *
+     * @return string
+     */
     protected function inputGroupPrepend(): string
     {
 
