@@ -9,6 +9,8 @@ use Yiisoft\Html\Html;
 abstract class WalkerNavMenu extends Walker_Nav_Menu
 {
 
+    abstract public function render(): string;
+
     public function start_lvl(&$output, $depth = 0, $args = null)
     {
 
@@ -50,7 +52,12 @@ abstract class WalkerNavMenu extends Walker_Nav_Menu
         $id = apply_filters('nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth);
         $id = $id ? ' id="' . esc_attr($id) . '"' : '';
 
-        $output .= $indent . '<li' . $id . $class_names . '>';
+        if ($this->hasParent($item)) {
+            $output .= $indent . '<li class="dropdown-nav-item" ' . $id . '>';
+        } else {
+            $output .= $indent . '<li' . $id . $class_names . '>';
+        }
+
 
         $atts = array();
         $atts['title']  = ! empty($item->attr_title) ? $item->attr_title : '';
@@ -65,13 +72,13 @@ abstract class WalkerNavMenu extends Walker_Nav_Menu
 
         // data-toggle
         if ($this->hasChildren($item->classes)) {
+            $atts['class'] = $class . ' d-flex';
             $atts['role'] = 'button';
             $atts['data-toggle'] = 'dropdown';
             $atts['aria-expanded'] = 'false';
         }
 
         $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args, $depth);
-
 
         $attributes = '';
         foreach ($atts as $attr => $value) {
@@ -86,7 +93,10 @@ abstract class WalkerNavMenu extends Walker_Nav_Menu
         $title = apply_filters('nav_menu_item_title', $title, $item, $args, $depth);
 
         if ($this->hasChildren($item->classes)) {
-            $title = $title . ' ' . Html::span('arrow_drop_down', ['class' => 'material-icons-outlined'])->render();
+            $title = implode('', [
+                Html::span($title, ['class' => 'dropdown-title']),
+                Html::span('arrow_drop_down', ['class' => 'material-icons-outlined'])
+            ]);
         }
 
         $item_output = $args->before;

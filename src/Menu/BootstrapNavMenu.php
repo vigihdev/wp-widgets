@@ -7,8 +7,18 @@ final class BootstrapNavMenu extends WalkerNavMenu
 {
 
 
-    public function __construct()
+    public function __construct(array $options = []) {}
+
+    public function render(): string
     {
+        return implode(PHP_EOL, [
+            $this->renderMenuItem(),
+        ]);
+    }
+
+    private function renderMenuItem(): string
+    {
+
         $menu = wp_nav_menu(array(
             'name' => 'primary',
             'container' => false,
@@ -19,5 +29,10 @@ final class BootstrapNavMenu extends WalkerNavMenu
             'depth' => 2,
             'walker' => $this,
         ));
+
+        return (string)$menu;
     }
+
+    private function renderNavBarBrand() {}
+    private function renderSearchInput() {}
 }
