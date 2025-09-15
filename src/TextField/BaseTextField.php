@@ -22,6 +22,10 @@ abstract class BaseTextField
     ) {}
 
 
+    /**
+     *
+     * @return string
+     */
     protected function getLabel(): string
     {
 
