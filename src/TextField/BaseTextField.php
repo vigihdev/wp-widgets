@@ -44,6 +44,10 @@ abstract class BaseTextField
         ]);
     }
 
+    /**
+     *
+     * @return string
+     */
     protected function textInput(): string
     {
 
