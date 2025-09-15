@@ -13,6 +13,10 @@ final class BackToTop
     public function __construct() {}
 
 
+    /**
+     *
+     * @return string
+     */
     public function render(): string
     {
 
