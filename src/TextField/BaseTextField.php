@@ -21,7 +21,10 @@ abstract class BaseTextField
         protected array $inputGroupOptions = [],
     ) {}
 
-
+    /**
+     *
+     * @return string
+     */
     protected function getLabel(): string
     {
 
