@@ -8,6 +8,14 @@ use Yiisoft\Arrays\ArrayHelper;
 use Yiisoft\Html\Html;
 use Yiisoft\Strings\Inflector;
 
+/**
+ * Kelas abstrak `BaseTextField` menyediakan dasar untuk membuat bidang teks dengan berbagai opsi konfigurasi.
+ *
+ * Kelas ini memungkinkan pengaturan nama, opsi elemen HTML, ikon, label, dan grup input.
+ * Kelas ini dirancang untuk diperluas oleh kelas lain yang membutuhkan fungsionalitas bidang teks.
+ *
+ * @package WpWidgets\TextField
+ */
 abstract class BaseTextField
 {
 
@@ -43,6 +51,15 @@ abstract class BaseTextField
         ]);
     }
 
+    /**
+     * Menghasilkan HTML untuk input teks.
+     *
+     * Metode ini membuat elemen input teks dengan atribut dan kelas yang ditentukan
+     * dalam properti `inputOptions`. Kelas default 'form-control' ditambahkan ke
+     * kelas yang sudah ada dalam opsi input.
+     *
+     * @return string HTML yang dihasilkan untuk input teks.
+     */
     protected function textInput(): string
     {
 
@@ -54,6 +71,14 @@ abstract class BaseTextField
         return Html::textInput($this->name, null, $this->inputOptions)->render();
     }
 
+    /**
+     * Menghasilkan HTML untuk pembungkus label bidang teks.
+     *
+     * Metode ini membuat struktur HTML yang mencakup elemen pembungkus label
+     * dan elemen dekoratif seperti outline kiri, tengah, dan kanan.
+     *
+     * @return string HTML yang dihasilkan untuk pembungkus label.
+     */
     protected function getLabelWrapper(): string
     {
 
@@ -69,6 +94,14 @@ abstract class BaseTextField
     }
 
 
+    /**
+     * Menghasilkan HTML untuk elemen input group prepend.
+     *
+     * Metode ini membuat struktur HTML yang mencakup elemen pembungkus
+     * untuk ikon yang ditempatkan di depan input teks.
+     *
+     * @return string HTML yang dihasilkan untuk input group prepend.
+     */
     protected function inputGroupPrepend(): string
     {
 
@@ -81,6 +114,12 @@ abstract class BaseTextField
         ]);
     }
 
+    /**
+     * 
+     * Menghasilkan HTML untuk elemen input group append.
+     * 
+     * @return string HTML yang dihasilkan untuk input group append.
+     */
     protected function inputGroupAppend(): string
     {
 
@@ -93,6 +132,14 @@ abstract class BaseTextField
         ]);
     }
 
+    /**
+     * Menghasilkan HTML untuk ikon yang digunakan dalam bidang teks.
+     *
+     * Metode ini mengambil nama ikon dari properti `iconOptions` dan membuat
+     * elemen HTML untuk ikon tersebut dengan kelas yang sesuai.
+     *
+     * @return string HTML yang dihasilkan untuk ikon.
+     */
     protected function icon(): string
     {
         $name = ArrayHelper::remove($this->iconOptions, 'name', 'layers');
