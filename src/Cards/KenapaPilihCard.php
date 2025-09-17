@@ -7,20 +7,46 @@ namespace WpWidgets\Cards;
 use Yiisoft\Arrays\ArrayHelper;
 use Yiisoft\Html\Html;
 
+/**
+ * KenapaPilihCard
+ * Kelas ini memperluas `BaseCard` untuk menampilkan kartu dengan alasan 'Kenapa Memilih Kami'.
+ * Setiap kartu menampilkan ikon, judul, dan deskripsi.
+ */
 final class KenapaPilihCard extends BaseCard
 {
 
+    /**
+     * @var array $items Array yang menyimpan daftar item 'Kenapa Pilih Kami'.
+     */
     private array $items = [];
 
+    /**
+     * Mengembalikan nama unik untuk jenis kartu ini.
+     *
+     * @return string Nama jenis kartu.
+     */
     protected static function getName(): string
     {
         return 'kenapa-pilih-card';
     }
 
+    /**
+     * Konstruktor KenapaPilihCard.
+     *
+     * @param string $basePathImg Path dasar ke direktori yang berisi gambar ikon.
+     */
     public function __construct(
         private readonly string $basePathImg
     ) {}
 
+    /**
+     * Menambahkan item 'Kenapa Pilih Kami' baru ke daftar kartu.
+     *
+     * @param string $iconName Nama file ikon.
+     * @param string $title Judul item.
+     * @param string $description Deskripsi item.
+     * @return self Instance KenapaPilihCard saat ini untuk chaining method.
+     */
     public function add(string $iconName, string $title, string $description): self
     {
 
@@ -31,6 +57,11 @@ final class KenapaPilihCard extends BaseCard
         return $this;
     }
 
+    /**
+     * Merender daftar kartu 'Kenapa Pilih Kami' menjadi string HTML.
+     *
+     * @return string Representasi HTML dari daftar kartu.
+     */
     public function render(): string
     {
 

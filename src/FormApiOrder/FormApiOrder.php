@@ -7,12 +7,24 @@ namespace WpWidgets\FormApiOrder;
 use WpWidgets\TextField\RoundedTextField;
 use Yiisoft\Html\Html;
 
-
+/**
+ * FormApiOrder
+ * Kelas ini digunakan untuk menampilkan formulir pemesanan API.
+ * Formulir ini mencakup bidang untuk penjemputan, tujuan, tanggal mulai, dan tombol aksi.
+ */
 final class FormApiOrder
 {
 
+    /**
+     * Konstruktor default untuk kelas FormApiOrder.
+     */
     public function __construct() {}
 
+    /**
+     * Merender seluruh formulir pemesanan API menjadi string HTML.
+     *
+     * @return string Representasi HTML dari formulir pemesanan API.
+     */
     public function render(): string
     {
 
@@ -44,6 +56,11 @@ final class FormApiOrder
     }
 
 
+    /**
+     * Merender bidang input untuk lokasi penjemputan.
+     *
+     * @return string Representasi HTML dari bidang input penjemputan.
+     */
     protected function renderPenjemputan()
     {
         return (new RoundedTextField(
@@ -60,6 +77,11 @@ final class FormApiOrder
     }
 
 
+    /**
+     * Merender bidang input untuk lokasi tujuan.
+     *
+     * @return string Representasi HTML dari bidang input tujuan.
+     */
     protected function renderTujuan(): string
     {
         return (new RoundedTextField(
@@ -72,6 +94,11 @@ final class FormApiOrder
         ))->field();
     }
 
+    /**
+     * Merender bidang input untuk tanggal mulai.
+     *
+     * @return string Representasi HTML dari bidang input tanggal mulai.
+     */
     protected function renderTglMulai(): string
     {
         return (new RoundedTextField(
@@ -83,8 +110,9 @@ final class FormApiOrder
 
 
     /**
+     * Merender tombol aksi formulir.
      *
-     * @return string
+     * @return string Representasi HTML dari tombol aksi.
      */
     protected function renderButtonAction(): string
     {

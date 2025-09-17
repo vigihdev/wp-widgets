@@ -7,17 +7,40 @@ namespace WpWidgets\CaraPesan;
 use Yiisoft\Arrays\ArrayHelper;
 use Yiisoft\Html\Html;
 
+/**
+ * CaraPesan
+ * Kelas ini digunakan untuk menampilkan langkah-langkah atau cara pemesanan dalam bentuk kartu (card).
+ * Cocok digunakan untuk widget yang memandu pengguna melalui sebuah proses.
+ */
 final class CaraPesan
 {
-
+    /**
+     * @var array $items Array yang menyimpan daftar langkah-langkah pemesanan.
+     */
     protected array $items = [];
 
+    /**
+     * Konstruktor default untuk kelas CaraPesan.
+     */
+    public function __construct() {}
+
+    /**
+     * Mengembalikan nama unik untuk kelas ini.
+     *
+     * @return string Nama kelas.
+     */
     protected static function getName(): string
     {
         return 'cara-pesan-card';
     }
 
-
+    /**
+     * Menambahkan langkah pemesanan baru ke daftar.
+     *
+     * @param string $title Judul langkah pemesanan.
+     * @param string $description Deskripsi detail langkah pemesanan.
+     * @return self Instance CaraPesan saat ini untuk chaining method.
+     */
     public function add(string $title, string $description): self
     {
 
@@ -27,6 +50,11 @@ final class CaraPesan
         return $this;
     }
 
+    /**
+     * Merender daftar langkah pemesanan menjadi string HTML.
+     *
+     * @return string Representasi HTML dari daftar langkah pemesanan.
+     */
     public function render(): string
     {
         $items = [];

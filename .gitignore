@@ -2,9 +2,10 @@
 .amazonq
 .github
 /.vscode
+/.cursor
 
 # Dependency directories
-/vendor/
+/vendor
 
 # Composer
 composer.lock

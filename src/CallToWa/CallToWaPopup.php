@@ -8,13 +8,26 @@ namespace WpWidgets\CallToWa;
 use Yiisoft\Html\Html;
 
 
+/**
+ * CallToWaPopup
+ * Kelas untuk membuat widget tombol 'Call to WhatsApp' yang menampilkan popup WhatsApp.
+ */
 final class CallToWaPopup
 {
-
+    /**
+     * CallToWaPopup constructor.
+     *
+     * @param string $imgUrl The URL of the image to be displayed.
+     */
     public function __construct(
         protected readonly string $imgUrl
     ) {}
 
+    /**
+     * Renders the CallToWa widget.
+     *
+     * @return string The HTML string of the rendered widget.
+     */
     public function render(): string
     {
 

@@ -8,11 +8,27 @@ use WP_Post;
 use WP_Query;
 use Yiisoft\Html\Html;
 
+/**
+ * RandomPost
+ * Kelas ini digunakan untuk menampilkan daftar postingan WordPress secara acak sebagai 'quick links'.
+ * Ini mengambil beberapa postingan acak dan merendernya dalam format HTML yang dapat diklik.
+ */
 final class RandomPost
 {
 
+    /**
+     * Konstruktor default untuk kelas RandomPost.
+     */
     public function __construct() {}
 
+    /**
+     * Merender daftar postingan acak menjadi string HTML.
+     *
+     * Ini mengambil postingan acak, membuat elemen HTML untuk setiap postingan,
+     * dan mengembalikannya sebagai string.
+     *
+     * @return string Representasi HTML dari daftar postingan acak.
+     */
     public function render(): string
     {
 
@@ -48,6 +64,11 @@ final class RandomPost
         return implode('', $items);
     }
 
+    /**
+     * Mengembalikan URI gambar default jika tidak ada gambar thumbnail untuk postingan.
+     *
+     * @return string URI gambar default.
+     */
     private function getImgDefault(): string
     {
         return get_template_directory_uri() .
@@ -57,8 +78,9 @@ final class RandomPost
 
 
     /**
+     * Mengambil daftar postingan WordPress acak.
      *
-     * @return WP_Post[]
+     * @return WP_Post[] Array objek WP_Post yang berisi postingan acak.
      */
     private function getPosts(): array
     {
@@ -81,6 +103,11 @@ final class RandomPost
         return $posts;
     }
 
+    /**
+     * Fungsi debug untuk mencetak variabel ke output dengan format pre.
+     *
+     * @param mixed $param Variabel yang akan dicetak.
+     */
     private function debug($param)
     {
         echo '<pre style="background: #fff;">';

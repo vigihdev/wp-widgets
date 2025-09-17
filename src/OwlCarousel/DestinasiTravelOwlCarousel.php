@@ -7,14 +7,31 @@ namespace WpWidgets\OwlCarousel;
 use Symfony\Component\Finder\Finder;
 use Yiisoft\Html\Html;
 
+/**
+ * DestinasiTravelOwlCarousel
+ * Kelas ini memperluas `AbstractOwlCarousel` untuk membuat Owl Carousel yang menampilkan destinasi travel.
+ * Ini mengambil gambar dari path yang diberikan dan merendernya dalam format carousel.
+ */
 final class DestinasiTravelOwlCarousel extends AbstractOwlCarousel
 {
 
+    /**
+     * Konstruktor DestinasiTravelOwlCarousel.
+     *
+     * @param string $basePathImg Path dasar ke direktori yang berisi gambar destinasi travel.
+     */
     public function __construct(
         protected readonly string $basePathImg
     ) {}
 
 
+    /**
+     * Merender Owl Carousel untuk destinasi travel menjadi string HTML.
+     *
+     * Ini mencari gambar `.webp` di `$basePathImg` dan merendernya sebagai item carousel.
+     *
+     * @return string Representasi HTML dari Owl Carousel destinasi travel.
+     */
     public function render(): string
     {
 
@@ -48,8 +65,11 @@ final class DestinasiTravelOwlCarousel extends AbstractOwlCarousel
 
 
     /**
+     * Merender opsi konfigurasi untuk Owl Carousel sebagai string JSON.
      *
-     * @return string
+     * Ini mengonfigurasi carousel dengan opsi default dan responsif.
+     *
+     * @return string String JSON yang berisi opsi konfigurasi Owl Carousel.
      */
     protected function renderOption(): string
     {

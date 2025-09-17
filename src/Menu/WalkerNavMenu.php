@@ -6,11 +6,29 @@ use Walker_Nav_Menu;
 use WP_Post;
 use Yiisoft\Html\Html;
 
+/**
+ * WalkerNavMenu
+ * Kelas abstrak ini memperluas `Walker_Nav_Menu` WordPress untuk menyediakan fungsionalitas dasar
+ * dalam membangun menu navigasi kustom. Ini menyediakan metode untuk menangani level menu, item menu,
+ * dan logika terkait lainnya.
+ */
 abstract class WalkerNavMenu extends Walker_Nav_Menu
 {
 
+    /**
+     * Merender menu navigasi. Metode ini harus diimplementasikan oleh kelas turunan.
+     *
+     * @return string Representasi HTML dari menu navigasi.
+     */
     abstract public function render(): string;
 
+    /**
+     * Memulai output untuk level baru dari daftar item menu.
+     *
+     * @param string $output Output HTML yang akan dimodifikasi.
+     * @param int $depth Kedalaman (indeks) dari item yang sedang diproses. Level atas adalah 0.
+     * @param object|array|null $args Argumen yang digunakan untuk mengontrol cara item menu ditampilkan.
+     */
     public function start_lvl(&$output, $depth = 0, $args = null)
     {
 
@@ -30,6 +48,15 @@ abstract class WalkerNavMenu extends Walker_Nav_Menu
     }
 
 
+    /**
+     * Memulai output untuk elemen item menu.
+     *
+     * @param string $output Output HTML yang akan dimodifikasi.
+     * @param object $item Objek item menu saat ini.
+     * @param int $depth Kedalaman (indeks) dari item yang sedang diproses. Level atas adalah 0.
+     * @param object|array|null $args Argumen yang digunakan untuk mengontrol cara item menu ditampilkan.
+     * @param int $id ID item menu saat ini.
+     */
     public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
     {
 

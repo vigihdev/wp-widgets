@@ -6,21 +6,56 @@ namespace WpWidgets\Question;
 
 use Yiisoft\Html\Html;
 
+/**
+ * AbstractQuestion
+ * Kelas abstrak dasar untuk mengelola dan menampilkan daftar pertanyaan dan jawaban.
+ * Menyediakan fungsionalitas umum untuk rendering elemen UI pertanyaan dan jawaban.
+ */
 abstract class AbstractQuestion
 {
 
 
+    /**
+     * Mengembalikan nama unik untuk kelas ini. Harus diimplementasikan oleh kelas turunan.
+     *
+     * @return string Nama unik kelas.
+     */
     abstract protected static function getName(): string;
 
+    /**
+     * Menambahkan pertanyaan dan jawaban baru ke daftar. Harus diimplementasikan oleh kelas turunan.
+     *
+     * @param string $question Teks pertanyaan.
+     * @param array $answers Array berisi teks jawaban.
+     * @return self Instance kelas saat ini untuk chaining method.
+     */
     abstract public function add(string $question, array $answers): self;
 
+    /**
+     * Merender daftar pertanyaan dan jawaban menjadi string HTML. Harus diimplementasikan oleh kelas turunan.
+     *
+     * @return string Representasi HTML dari daftar pertanyaan dan jawaban.
+     */
     abstract public function render(): string;
 
+    /**
+     * Merender ikon 'add' sebagai string HTML.
+     *
+     * @return string Representasi HTML dari ikon 'add'.
+     */
     protected function renderIconAdd(): string
     {
         return Html::span('add', ['class' => 'material-icons-outlined'])->render();
     }
 
+    /**
+     * Merender elemen collapse untuk pertanyaan.
+     *
+     * @param string $target ID target elemen yang akan diciutkan.
+     * @param string $parent ID parent untuk grup collapse.
+     * @param string $content Teks pertanyaan yang akan ditampilkan.
+     * @return string Representasi HTML dari elemen collapse pertanyaan.
+     */
     protected function renderQuestionCollapse(string $target, string $parent, string $content): string
     {
         return implode('', [
@@ -41,6 +76,12 @@ abstract class AbstractQuestion
         ]);
     }
 
+    /**
+     * Merender daftar jawaban menjadi string HTML.
+     *
+     * @param array $answers Array berisi teks jawaban.
+     * @return string Representasi HTML dari daftar jawaban.
+     */
     protected function renderAnswers(array $answers): string
     {
 

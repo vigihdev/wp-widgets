@@ -8,16 +8,33 @@ use Yiisoft\Arrays\ArrayHelper;
 use Yiisoft\Html\Html;
 use Yiisoft\Strings\Inflector;
 
-
+/**
+ * ContactInfo
+ * Kelas ini digunakan untuk menampilkan informasi kontak seperti nomor telepon, alamat email, atau media sosial.
+ */
 final class ContactInfo
 {
-
+    /**
+     * @var array $items Array yang menyimpan daftar item informasi kontak.
+     */
     private array $items = [];
 
+    /**
+     * Konstruktor ContactInfo.
+     *
+     * @param string $baseUrlImg URL dasar untuk gambar ikon kontak.
+     */
     public function __construct(
         protected readonly string $baseUrlImg
     ) {}
 
+    /**
+     * Menambahkan item informasi kontak baru ke daftar.
+     *
+     * @param string $filename Nama file ikon kontak.
+     * @param string $content Konten informasi kontak (misal: nomor telepon, alamat email).
+     * @return self Instance ContactInfo saat ini untuk chaining method.
+     */
     public function add(string $filename, string $content): self
     {
         $this->items = ArrayHelper::merge($this->items, [
@@ -26,6 +43,11 @@ final class ContactInfo
         return $this;
     }
 
+    /**
+     * Merender daftar informasi kontak menjadi string HTML.
+     *
+     * @return string Representasi HTML dari daftar informasi kontak.
+     */
     public function render(): string
     {
 

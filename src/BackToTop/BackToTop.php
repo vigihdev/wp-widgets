@@ -7,15 +7,23 @@ namespace WpWidgets\BackToTop;
 
 use Yiisoft\Html\Html;
 
+/**
+ * BackToTop
+ * Kelas untuk membuat widget tombol 'Back to Top' yang memungkinkan pengguna untuk kembali ke bagian atas halaman.
+ */
 final class BackToTop
 {
 
+    /**
+     * BackToTop constructor.
+     */
     public function __construct() {}
 
 
     /**
+     * Merender tombol 'Back to Top' menjadi string HTML.
      *
-     * @return string
+     * @return string Representasi HTML dari tombol 'Back to Top'.
      */
     public function render(): string
     {

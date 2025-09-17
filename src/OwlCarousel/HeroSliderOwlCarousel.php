@@ -8,13 +8,30 @@ use Symfony\Component\Filesystem\Path;
 use Symfony\Component\Finder\Finder;
 use Yiisoft\Html\Html;
 
+/**
+ * HeroSliderOwlCarousel
+ * Kelas ini digunakan untuk membuat Owl Carousel hero slider yang menampilkan gambar dari path yang diberikan.
+ * Ini menyediakan fungsionalitas untuk merender slide gambar dan mengonfigurasi opsi carousel.
+ */
 final class HeroSliderOwlCarousel
 {
 
+    /**
+     * Konstruktor HeroSliderOwlCarousel.
+     *
+     * @param string $basePathImg Path dasar ke direktori yang berisi gambar hero slider.
+     */
     public function __construct(
         protected readonly string $basePathImg
     ) {}
 
+    /**
+     * Merender Owl Carousel hero slider menjadi string HTML.
+     *
+     * Ini mencari gambar `.png` di `$basePathImg` dan merendernya sebagai item carousel.
+     *
+     * @return string Representasi HTML dari Owl Carousel hero slider.
+     */
     public function render(): string
     {
 
@@ -54,6 +71,12 @@ final class HeroSliderOwlCarousel
         ]);
     }
 
+    /**
+     * Mengubah path file lokal menjadi URI yang dapat diakses melalui web.
+     *
+     * @param string $filepath Path lengkap ke file lokal.
+     * @return string URI yang dapat diakses melalui web untuk file tersebut.
+     */
     private function transformPathFileToUri(string $filepath): string
     {
         return get_template_directory_uri() . DIRECTORY_SEPARATOR .
@@ -61,8 +84,11 @@ final class HeroSliderOwlCarousel
     }
 
     /**
+     * Merender opsi konfigurasi untuk Owl Carousel sebagai string JSON.
      *
-     * @return string
+     * Ini mengonfigurasi carousel dengan opsi default dan responsif.
+     *
+     * @return string String JSON yang berisi opsi konfigurasi Owl Carousel.
      */
     protected function renderOption(): string
     {

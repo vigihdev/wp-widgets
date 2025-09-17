@@ -9,15 +9,32 @@ use Yiisoft\Arrays\ArrayHelper;
 use Yiisoft\Html\Html;
 
 
+/**
+ * WhatsappPopup
+ * Kelas untuk membuat widget popup WhatsApp yang menampilkan daftar kontak.
+ */
 final class WhatsappPopup
 {
 
     private array $items = [];
 
+    /**
+     * WhatsappPopup constructor.
+     *
+     * @param string $title The title of the WhatsApp popup.
+     */
     public function __construct(
         private readonly string $title
     ) {}
 
+    /**
+     * Adds a new WhatsApp contact item to the popup.
+     *
+     * @param string $iconUrl The URL of the icon for the contact.
+     * @param string $username The username for the contact.
+     * @param string $no_hp The phone number for the contact.
+     * @return self
+     */
     public function add(string $iconUrl, string $username, string $no_hp): self
     {
         $this->items = ArrayHelper::merge($this->items, [
@@ -26,6 +43,11 @@ final class WhatsappPopup
         return $this;
     }
 
+    /**
+     * Merender seluruh popup WhatsApp menjadi string HTML.
+     *
+     * @return string Representasi HTML dari popup WhatsApp.
+     */
     public function render(): string
     {
 
@@ -53,6 +75,11 @@ final class WhatsappPopup
         ]);
     }
 
+    /**
+     * Renders the individual WhatsApp contact items.
+     *
+     * @return string The HTML string of the rendered contact items.
+     */
     private function renderItems(): string
     {
 

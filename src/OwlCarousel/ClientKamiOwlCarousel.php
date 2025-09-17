@@ -7,14 +7,30 @@ namespace WpWidgets\OwlCarousel;
 use Symfony\Component\Finder\Finder;
 use Yiisoft\Html\Html;
 
-
+/**
+ * ClientKamiOwlCarousel
+ * Kelas ini memperluas `AbstractOwlCarousel` untuk membuat Owl Carousel yang menampilkan logo atau gambar klien.
+ * Ini mengambil gambar dari path yang diberikan dan merendernya dalam format carousel.
+ */
 final class ClientKamiOwlCarousel extends AbstractOwlCarousel
 {
 
+    /**
+     * Konstruktor ClientKamiOwlCarousel.
+     *
+     * @param string $basePathImg Path dasar ke direktori yang berisi gambar klien.
+     */
     public function __construct(
         protected readonly string $basePathImg
     ) {}
 
+    /**
+     * Merender Owl Carousel untuk daftar klien menjadi string HTML.
+     *
+     * Ini mencari gambar `.webp` di `$basePathImg` dan merendernya sebagai item carousel.
+     *
+     * @return string Representasi HTML dari Owl Carousel klien.
+     */
     public function render(): string
     {
 
@@ -55,8 +71,11 @@ final class ClientKamiOwlCarousel extends AbstractOwlCarousel
     }
 
     /**
+     * Merender opsi konfigurasi untuk Owl Carousel sebagai string JSON.
      *
-     * @return string
+     * Ini mengonfigurasi carousel dengan opsi default dan responsif untuk klien.
+     *
+     * @return string String JSON yang berisi opsi konfigurasi Owl Carousel.
      */
     protected function renderOption(): string
     {

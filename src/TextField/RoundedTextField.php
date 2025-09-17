@@ -26,6 +26,21 @@ final class RoundedTextField extends BaseTextField
 {
 
     /**
+     * Konstruktor RoundedTextField.
+     * Menginisialisasi kelas dengan properti yang diwarisi dari BaseTextField.
+     */
+    public function __construct(
+        string $name = '',
+        array $options = [],
+        array $iconOptions = [],
+        array $inputOptions = [],
+        array $labelOptions = [],
+        array $inputGroupOptions = []
+    ) {
+        parent::__construct($name, $options, $iconOptions, $inputOptions, $labelOptions, $inputGroupOptions);
+    }
+
+    /**
      * Menghasilkan HTML untuk bidang teks dengan gaya membulat.
      *
      * Metode ini membuat elemen HTML yang mencakup label, grup input, dan tema yang dapat disesuaikan.

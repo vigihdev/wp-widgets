@@ -7,6 +7,12 @@ namespace WpWidgets\ReviewCustomer;
 use Yiisoft\Arrays\ArrayHelper;
 use Yiisoft\Html\Html;
 
+/**
+ * ReviewCustomer
+ *
+ * Kelas ini digunakan untuk menampilkan dan mengelola review dari customer.
+ * Cocok digunakan untuk widget testimoni atau review pelanggan di website.
+ */
 
 final class ReviewCustomer extends AbstractReviewCustomer
 {
@@ -17,11 +23,24 @@ final class ReviewCustomer extends AbstractReviewCustomer
      */
     private array $items = [];
 
+    /**
+     * ReviewCustomer constructor.
+     *
+     * @param string $baseUrlImg The base URL of the image.
+     */
     public function __construct(
         protected readonly string $baseUrlImg
     ) {}
 
-
+    /**
+     * Menambahkan item review baru ke daftar.
+     *
+     * @param string $imgName Nama file gambar profil customer.
+     * @param string $username Nama customer.
+     * @param float $rating Rating yang diberikan customer (skala 1.0 - 5.0).
+     * @param string $reviewText Teks review dari customer.
+     * @return self Instance ReviewCustomer saat ini untuk chaining method.
+     */
     public function add(string $imgName, string $username, float $rating, string $reviewText): self
     {
 
@@ -33,11 +52,16 @@ final class ReviewCustomer extends AbstractReviewCustomer
                 reviewText: $reviewText
             )
         ]);
-
+        
 
         return $this;
     }
 
+    /**
+     * Merender daftar review customer menjadi string HTML.
+     *
+     * @return string Representasi HTML dari daftar review.
+     */
     public function render(): string
     {
 

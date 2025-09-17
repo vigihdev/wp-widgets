@@ -8,20 +8,43 @@ use WpWidgets\Cards\Contract\LayananKamiInterface;
 use Yiisoft\Arrays\ArrayHelper;
 use Yiisoft\Html\Html;
 
+/**
+ * LayananKamiCard
+ * Kelas ini memperluas `BaseCard` untuk menampilkan kartu layanan kami.
+ * Setiap kartu menampilkan gambar, judul, dan deskripsi layanan.
+ */
 final class LayananKamiCard extends BaseCard
 {
-
+    /**
+     * @var array $items Array yang menyimpan daftar item layanan kami.
+     */
     private array $items = [];
 
+    /**
+     * Mengembalikan nama unik untuk jenis kartu ini.
+     *
+     * @return string Nama jenis kartu.
+     */
     protected static function getName(): string
     {
         return 'layanan-kami-card';
     }
 
+    /**
+     * Konstruktor LayananKamiCard.
+     *
+     * @param string $basePathImg Path dasar ke direktori yang berisi gambar layanan.
+     */
     public function __construct(
         private readonly string $basePathImg
     ) {}
 
+    /**
+     * Menambahkan item layanan baru ke daftar kartu.
+     *
+     * @param LayananKamiInterface $layanan Objek yang mengimplementasikan LayananKamiInterface.
+     * @return self Instance LayananKamiCard saat ini untuk chaining method.
+     */
     public function add(LayananKamiInterface $layanan): self
     {
         $imgFile = Html::img(
@@ -51,6 +74,11 @@ final class LayananKamiCard extends BaseCard
         return $this;
     }
 
+    /**
+     * Merender daftar kartu layanan kami menjadi string HTML.
+     *
+     * @return string Representasi HTML dari daftar kartu layanan.
+     */
     public function render(): string
     {
 
@@ -70,6 +98,11 @@ final class LayananKamiCard extends BaseCard
         return implode('', $items);
     }
 
+    /**
+     * Mengembalikan opsi HTML untuk gambar layanan.
+     *
+     * @return array Array opsi HTML untuk elemen `<img>`.
+     */
     private function getOptionsImg(): array
     {
         return [

@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace WpWidgets\Cards\Contract;
 
+/**
+ * DaftarHargaInterface
+ * Antarmuka untuk merepresentasikan data daftar harga mobil.
+ */
 interface DaftarHargaInterface
 {
     /**

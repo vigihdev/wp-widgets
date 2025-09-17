@@ -20,6 +20,16 @@ abstract class BaseTextField
 {
 
 
+    /**
+     * Konstruktor BaseTextField.
+     *
+     * @param string $name Nama bidang teks.
+     * @param array $options Opsi HTML untuk elemen utama bidang teks.
+     * @param array $iconOptions Opsi HTML untuk ikon.
+     * @param array $inputOptions Opsi HTML untuk elemen input.
+     * @param array $labelOptions Opsi HTML untuk label.
+     * @param array $inputGroupOptions Opsi HTML untuk grup input.
+     */
     public function __construct(
         public string $name,
         protected array $options = [],
@@ -30,8 +40,13 @@ abstract class BaseTextField
     ) {}
 
     /**
+     * Menghasilkan HTML untuk label bidang teks.
      *
-     * @return string
+     * Metode ini membuat elemen label HTML berdasarkan nama bidang teks
+     * dan opsi label yang ditentukan. Ini juga menambahkan indikator
+     * 'wajib' jika diatur.
+     *
+     * @return string HTML yang dihasilkan untuk label.
      */
     protected function getLabel(): string
     {
