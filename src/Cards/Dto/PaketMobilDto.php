@@ -17,11 +17,11 @@ final class PaketMobilDto implements PaketMobilInterface
     /**
      * Konstruktor PaketMobilDto.
      *
-     * @param string $namaMobil Nama mobil.
+     * @param string $nama_mobil Nama mobil.
      * @param string $filename Nama file gambar mobil.
      */
     public function __construct(
-        private readonly string $namaMobil,
+        private readonly string $nama_mobil,
         private readonly string $filename
     ) {}
 
@@ -32,7 +32,7 @@ final class PaketMobilDto implements PaketMobilInterface
      */
     public function getNamaMobil(): string
     {
-        return $this->namaMobil;
+        return $this->nama_mobil;
     }
 
     /**

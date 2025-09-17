@@ -2,17 +2,16 @@
 
 declare(strict_types=1);
 
-namespace WpWidgets\Sidebar;
+namespace WpWidgets\MainWidget;
 
 use Yiisoft\Html\Html;
 
-final class PostTerbaru extends BaseSidebar
+final class ArtikelTerkait extends BaseMainWidget
 {
-
 
     protected static function getName(): string
     {
-        return 'post-terbaru-widget';
+        return 'artikel-terkait-widget';
     }
 
     public function __construct() {}
@@ -22,7 +21,7 @@ final class PostTerbaru extends BaseSidebar
     {
         return implode('', [
             Html::openTag('div', ['class' => self::getName()]),
-            $this->renderWidgetTitle('Post Terbaru'),
+            'hello artikel terkait',
             Html::closeTag('div'),
         ]);
     }

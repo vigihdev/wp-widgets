@@ -18,11 +18,11 @@ final class PaketHargaDto implements PaketHargaInterface
      * Konstruktor PaketHargaDto.
      *
      * @param int $harga Harga paket.
-     * @param string $namaPaket Nama paket harga.
+     * @param string $nama_paket Nama paket harga.
      */
     public function __construct(
         private readonly int $harga,
-        private readonly string $namaPaket
+        private readonly string $nama_paket
     ) {}
 
     /**
@@ -42,6 +42,6 @@ final class PaketHargaDto implements PaketHargaInterface
      */
     public function getNamaPaket(): string
     {
-        return $this->namaPaket;
+        return $this->nama_paket;
     }
 }
