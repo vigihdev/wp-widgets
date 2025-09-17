@@ -23,6 +23,6 @@ final class BulananDaftarHarga extends BaseDaftarHarga
 
     protected static function getName(): string
     {
-        return 'bulanan-daftar-harga';
+        return 'bulanan-daftar-harga-card';
     }
 }

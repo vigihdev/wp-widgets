@@ -52,7 +52,7 @@ abstract class BaseDaftarHarga
             Html::tag(
                 'span',
                 'Rp. ' . number_format($this->harga, 0, ',', '.'),
-                ['class' => 'harga-sewa', 'data-harga' => $this->harga]
+                ['class' => 'text-harga', 'data-harga' => $this->harga]
             ),
             Html::closeTag('div'),
         ]);
@@ -65,7 +65,7 @@ abstract class BaseDaftarHarga
             Html::button(
                 'Pesan Sekarang',
                 [
-                    'class' => 'btn btn-dark btn-block btn-action btn-pesan-sekarang',
+                    'class' => 'btn btn-dark btn-block ripple-effect btn-action btn-pesan-sekarang',
                     'data-harga' => $this->harga,
                     'data-nama-mobil' => $this->nama_mobil,
                     'data-uri-action-button' => $this->uriActionButton,
